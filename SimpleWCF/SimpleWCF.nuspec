@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 <metadata>
-  <id>SimpleWCF</id>
+  <id>CupcakeFactory.SimpleWCF</id>
   <version>$version$</version>
   <authors>Chase Q. Aucoin</authors>
   <owners>Chase Q. Aucoin</owners>
