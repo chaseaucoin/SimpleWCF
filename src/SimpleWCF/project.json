@@ -1,4 +1,4 @@
-﻿{
+{
   "title": "SimpleWCF",
   "copyright": "2016",
   "description": "A library dedicated to make working with WCF a pure joy instead of a mind-altering walk through fire-needles.",
@@ -11,11 +11,13 @@
   },
 
   "frameworks": {
-    "netstandard1.6": {
-      "imports": "dnxcore50"
-    },
-    "net452": {},
-    "net45": {},
-    "net40": {}
+    "net452": {
+      "dependencies": {
+        "CupcakeFactory.SimpleProxy": "1.0.0"
+      },
+      "frameworkAssemblies": {
+        "System.ServiceModel": "4.0.0.0"
+      }
+    }
   }
 }

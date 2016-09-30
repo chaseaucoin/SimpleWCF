@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{0D563874-8
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleWCF.45.Test", "SimpleWCF.45.Test\SimpleWCF.45.Test.csproj", "{8A9C6475-8E5A-48BA-AAE4-CD16E15EB920}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,11 +30,16 @@ Global
 		{9AADBC38-6A08-420E-BEEE-3B359D986051}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AADBC38-6A08-420E-BEEE-3B359D986051}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9AADBC38-6A08-420E-BEEE-3B359D986051}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A9C6475-8E5A-48BA-AAE4-CD16E15EB920}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A9C6475-8E5A-48BA-AAE4-CD16E15EB920}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A9C6475-8E5A-48BA-AAE4-CD16E15EB920}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A9C6475-8E5A-48BA-AAE4-CD16E15EB920}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9AADBC38-6A08-420E-BEEE-3B359D986051} = {6D5F1B57-E5A9-40C1-91FF-09528746C6BC}
+		{8A9C6475-8E5A-48BA-AAE4-CD16E15EB920} = {6D5F1B57-E5A9-40C1-91FF-09528746C6BC}
 	EndGlobalSection
 EndGlobal
