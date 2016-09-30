@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 <metadata>
-  <id>$id$</id>
+  <id>SimpleWCF</id>
   <version>$version$</version>
-  <authors>$author$</authors>
-  <owners>$author$</owners>
+  <authors>Chase Q. Aucoin</authors>
+  <owners>Chase Q. Aucoin</owners>
   <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
   <projectUrl>https://github.com/chaseaucoin/SimpleWCF</projectUrl>
   <iconUrl>http://i.picresize.com/images/2016/03/13/2VqIY.png</iconUrl>
   <requireLicenseAcceptance>false</requireLicenseAcceptance>
-  <description>$description$</description>
+  <description>A library dedicated to make working with WCF a pure joy instead of a mind-altering walk through fire-needles.</description>
   <tags>WCF</tags>
 </metadata>
 </package>
