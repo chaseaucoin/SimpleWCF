@@ -56,4 +56,32 @@ Goals going forward. Make an "easy button" for service discovery. Add additional
 
 Using TweakHost you have full control over the underlying service host if you have custom behavior you need to add.
 
+## Example Hosting With TopShelf
+```csharp
+    static void Main(string[] args)
+    {
+        HostFactory.Run(x =>
+        {
+            x.Service<WCFDaemon>(s =>
+            {
+                s.ConstructUsing(name => new WCFDaemon()
+                    .AddService<IPingService, PingService>(config =>
+                    config.AddHttpBinding(9060)
+                ));     
+                s.WhenStarted(tc => tc.Start());
+                s.WhenStopped(tc => tc.Stop());
+
+            });
+
+            x.RunAsLocalSystem();
+            x.StartAutomatically();
+            x.SetStartTimeout(TimeSpan.FromSeconds(120));
+
+            x.SetDescription("PingService");
+            x.SetDisplayName("PingService");
+            x.SetServiceName("PingService");
+        });
+    }
+```
+
 [![cupcakefactory MyGet Build Status](https://www.myget.org/BuildSource/Badge/cupcakefactory?identifier=d7a7f3d4-e8b9-4f5d-8fee-1fa2b7ee5900)](https://www.myget.org/)
