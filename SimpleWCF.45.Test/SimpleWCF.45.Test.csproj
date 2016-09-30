@@ -33,8 +33,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SimpleWCF">
-      <HintPath>..\src\SimpleWCF\bin\Debug\net452\SimpleWCF.dll</HintPath>
+    <Reference Include="CupcakeFactory.SimpleProxy, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CupcakeFactory.SimpleProxy.1.0.0\lib\net452\CupcakeFactory.SimpleProxy.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SimpleWCF, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>LIB\SimpleWCF.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -55,6 +60,10 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="LIB\SimpleWCF.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

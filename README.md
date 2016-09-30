@@ -55,3 +55,5 @@ Goals going forward. Make an "easy button" for service discovery. Add additional
 ```
 
 Using TweakHost you have full control over the underlying service host if you have custom behavior you need to add.
+
+[![cupcakefactory MyGet Build Status](https://www.myget.org/BuildSource/Badge/cupcakefactory?identifier=d7a7f3d4-e8b9-4f5d-8fee-1fa2b7ee5900)](https://www.myget.org/)
