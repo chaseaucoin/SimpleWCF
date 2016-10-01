@@ -39,6 +39,14 @@ namespace SimpleWCF
             return this;
         }
 
+        public ServiceConfiguration<TServiceContract, TServiceImplementation> EnableDebug()
+        {
+            _host.Description.Behaviors.Add(
+                new ServiceDebugBehavior() { IncludeExceptionDetailInFaults = true });
+
+            return this;
+        }
+
         public ServiceConfiguration<TServiceContract, TServiceImplementation> SingleInstance()
         {
             var behavior = _host.Description.Behaviors.Find<ServiceBehaviorAttribute>();
