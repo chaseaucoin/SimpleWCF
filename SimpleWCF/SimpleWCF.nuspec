@@ -14,7 +14,7 @@
 </metadata>
   <files>
     <!-- Include everything in \build -->
-    <file src="bin\release\**" target="build" />
+    <file src="bin\release\**" target="lib" />
 
     <!-- Other files -->
     <!-- ... -->
