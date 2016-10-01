@@ -31,7 +31,7 @@ namespace SimpleWCF
 
         public ServiceConfiguration<TServiceContract, TServiceImplementation> AddHttpBinding(int port)
         {
-            var uriBuilder = new UriBuilder("http", Dns.GetHostName(), port, typeof(TServiceContract).Name);
+            var uriBuilder = new UriBuilder("http", "0", port, typeof(TServiceContract).Name);
 
             var binding = new BasicHttpBinding(BasicHttpSecurityMode.None);
             _host.AddServiceEndpoint(typeof(TServiceContract), binding, uriBuilder.ToString());
