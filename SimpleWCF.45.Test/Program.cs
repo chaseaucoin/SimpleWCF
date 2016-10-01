@@ -20,7 +20,7 @@ namespace SimpleWCF._45.Test
 
             daemon.Start();
             
-            IPingService service = new WCFProxy<IPingService>().GetHttpProxy("localhost", 9060);
+            IPingService service = new WCFProxy<IPingService>().GetHttpProxy(Dns.GetHostName(), 9060);
 
             for (int i = 0; i < 10; i++)
             {
