@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 <metadata>
   <id>CupcakeFactory.SimpleWCF</id>
-  <version>$version$</version>
+  <version>1.0.5</version>
   <authors>Chase Q. Aucoin</authors>
   <owners>Chase Q. Aucoin</owners>
   <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
