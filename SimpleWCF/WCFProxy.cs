@@ -22,7 +22,7 @@ namespace SimpleWCF
         public TServiceContract GetHttpProxy(string host, int port)
         {
             _channelFactory = new ChannelFactory<TServiceContract>(new BasicHttpBinding(BasicHttpSecurityMode.None));
-            var uriBuilder = new UriBuilder("http", host, 9060, typeof(TServiceContract).Name);
+            var uriBuilder = new UriBuilder("http", host, port, typeof(TServiceContract).Name);
             _serviceUri = uriBuilder.Uri;
 
             return (TServiceContract)_proxy.GetTransparentProxy();

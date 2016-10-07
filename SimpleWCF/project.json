@@ -3,7 +3,7 @@
   "copyright": "2016",
   "description": "A library dedicated to make working with WCF a pure joy instead of a mind-altering walk through fire-needles.",
   "language": "en",
-  "version": "1.0.0-*",
+  "version": "1.0.5-*",
   "authors": ["Chase Q. Aucoin"],
 
   "dependencies": {
