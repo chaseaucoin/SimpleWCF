@@ -44,6 +44,7 @@
       <HintPath>LIB\SimpleWCF.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.ServiceModel" />
   </ItemGroup>
   <Choose>
