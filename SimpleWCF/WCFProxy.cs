@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel;
 using System.Threading.Tasks;
 
@@ -12,7 +13,7 @@ namespace SimpleWCF
     {
         ChannelFactory<TServiceContract> _channelFactory;
         SimpleProxy<TServiceContract> _proxy;
-        Uri _serviceUri;
+        EndpointAddress _serviceEndpoint;
 
         public WCFProxy()
         {
@@ -23,7 +24,22 @@ namespace SimpleWCF
         {
             _channelFactory = new ChannelFactory<TServiceContract>(new BasicHttpBinding(BasicHttpSecurityMode.None));
             var uriBuilder = new UriBuilder("http", host, port, typeof(TServiceContract).Name);
-            _serviceUri = uriBuilder.Uri;
+            _serviceEndpoint = new EndpointAddress(uriBuilder.Uri);
+
+            return (TServiceContract)_proxy.GetTransparentProxy();
+        }
+
+        public TServiceContract GetSecureHttpProxy(string host, int port, string subject)
+        {
+            var httpBinding = new WSHttpBinding(SecurityMode.Message);
+            httpBinding.Security.Message.ClientCredentialType = MessageCredentialType.Certificate;
+            
+            _channelFactory = new ChannelFactory<TServiceContract>(httpBinding);
+            _channelFactory.Credentials.ClientCertificate
+                .SetCertificate(StoreLocation.LocalMachine, StoreName.TrustedPeople, X509FindType.FindBySubjectName, subject);            
+            
+            var uriBuilder = new UriBuilder("http", host, port, typeof(TServiceContract).Name);
+            _serviceEndpoint = new EndpointAddress(uriBuilder.Uri, EndpointIdentity.CreateDnsIdentity(subject));
 
             return (TServiceContract)_proxy.GetTransparentProxy();
         }
@@ -32,7 +48,7 @@ namespace SimpleWCF
         {
             var methodInfo = methodBase as MethodInfo;
 
-            var service = _channelFactory.CreateChannel(new EndpointAddress(_serviceUri));
+            var service = _channelFactory.CreateChannel(_serviceEndpoint);
 
             object result = null;
             bool success = false;

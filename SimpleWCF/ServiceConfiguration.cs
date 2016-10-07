@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel;
 using System.ServiceModel.Description;
 using System.Threading.Tasks;
@@ -34,6 +35,21 @@ namespace SimpleWCF
             var uriBuilder = new UriBuilder("http", "0", port, typeof(TServiceContract).Name);
 
             var binding = new BasicHttpBinding(BasicHttpSecurityMode.None);
+            _host.AddServiceEndpoint(typeof(TServiceContract), binding, uriBuilder.ToString());
+
+            return this;
+        }
+
+        public ServiceConfiguration<TServiceContract, TServiceImplementation> AddSecureHttpBinding(int port, string subject)
+        {
+            var uriBuilder = new UriBuilder("http", "0", port, typeof(TServiceContract).Name);
+
+            var binding = new WSHttpBinding(SecurityMode.Message);            
+            binding.Security.Message.ClientCredentialType = MessageCredentialType.Certificate;
+            
+            _host.Credentials.ServiceCertificate
+                .SetCertificate(StoreLocation.LocalMachine, StoreName.TrustedPeople, X509FindType.FindBySubjectName, subject);
+
             _host.AddServiceEndpoint(typeof(TServiceContract), binding, uriBuilder.ToString());
 
             return this;

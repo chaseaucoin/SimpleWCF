@@ -61,9 +61,10 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="LIB\SimpleWCF.dll" />
+    <Content Include="..\SimpleWCF\bin\Debug\net452\SimpleWCF.dll">
+      <Link>LIB\SimpleWCF.dll</Link>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
