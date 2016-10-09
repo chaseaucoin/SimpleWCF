@@ -7,6 +7,10 @@
   "authors": ["Chase Q. Aucoin"],
 
   "dependencies": {
+    "Microsoft.AspNet.SignalR.Client": "2.2.1",
+    "Microsoft.AspNet.SignalR.Core": "2.2.1",
+    "Microsoft.Owin.Host.HttpListener": "3.0.1",
+    "Microsoft.Owin.Hosting": "3.0.1",
     "NETStandard.Library": "1.6.0"
   },
 
@@ -16,6 +20,7 @@
         "CupcakeFactory.SimpleProxy": "1.0.0"
       },
       "frameworkAssemblies": {
+        "System.Runtime.Serialization": "4.0.0.0",
         "System.ServiceModel": "4.0.0.0"
       }
     }

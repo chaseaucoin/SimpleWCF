@@ -3,17 +3,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ServiceModel;
+using SimpleWCF.Discovery;
 
 namespace SimpleWCF
 {
-    public class WCFDaemon
+    public class WCFDaemon : IDisposable
     {
-        private List<ServiceHost> _hosts = new List<ServiceHost>();
+        private List<ServiceHost> _hosts;
+        private List<EndpointDetails> _endpointDetails;
+        private DiscoveryClient _discoveryClient;
 
-        private List<Action> _AddBindingList = new List<Action>();
+        public WCFDaemon()
+        {
+            System.Net.WebRequest.DefaultWebProxy = null;
+            System.Net.ServicePointManager.DefaultConnectionLimit = 1000;
+            System.Net.ServicePointManager.UseNagleAlgorithm = false;
 
-        private Action _AddDiscovery = () => {};
+            _hosts = new List<ServiceHost>();
+            _endpointDetails = new List<EndpointDetails>();
+        }
+
         
+
+        public WCFDaemon EnableAutoDiscovery(string discoveryHost, int port)
+        {
+            if (_discoveryClient != null)
+                return this;
+
+            _discoveryClient = new DiscoveryClient(port);            
+
+            return this;
+        }
+
         public WCFDaemon AddService<TServiceContract, TServiceImplementation>(Action<ServiceConfiguration<TServiceContract, TServiceImplementation>> buildAction)
         {
             var serviceBuilder = new ServiceConfiguration<TServiceContract, TServiceImplementation>();
@@ -21,8 +42,9 @@ namespace SimpleWCF
             buildAction(serviceBuilder);
 
             var host = serviceBuilder.CreateServiceHost();
-
+            
             _hosts.Add(host);
+            _endpointDetails.AddRange(serviceBuilder.EndpointDetails);
 
             return this;
         }
@@ -31,7 +53,15 @@ namespace SimpleWCF
         {
             foreach(var host in _hosts)
             {
-                host.Open();
+                host.Open();                
+            }
+
+            if (_discoveryClient != null)
+            {
+                foreach (var serviceEndpoint in _endpointDetails)
+                {
+                    _discoveryClient.AddService(serviceEndpoint);
+                }
             }
         }
 
@@ -41,6 +71,11 @@ namespace SimpleWCF
             {
                 host.Close();
             }
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
         }
     }
 }

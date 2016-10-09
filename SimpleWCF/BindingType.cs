@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 
 namespace SimpleWCF
 {
-    public class DiscoveryHub
+    public enum BindingType
     {
+        WCF_Http,
+        WCF_SecureHttp
     }
 }
