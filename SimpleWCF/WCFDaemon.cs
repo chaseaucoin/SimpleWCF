@@ -75,7 +75,7 @@ namespace SimpleWCF
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _discoveryClient.Dispose();
         }
     }
 }
